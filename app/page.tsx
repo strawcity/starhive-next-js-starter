@@ -43,10 +43,6 @@ export default async function Home() {
         <h1 className="title">Erik Nilsson</h1>
 
         <div className="paragraph">
-          This is a demo page that helps you get started with your Next.js app
-          using Starhive platform as a backend.
-        </div>
-        <div className="paragraph">
           Follow the onboarding steps to set up your workspace, define your
           types and auto generate domain classes.
         </div>
