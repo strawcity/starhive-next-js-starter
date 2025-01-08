@@ -10,8 +10,6 @@ import {
 } from "./api/ClientFactory";
 import HeaderBlock from "./components/HeaderBlock";
 
-const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Starhive starter",
   description: "Starhive & Next.js Starter",
