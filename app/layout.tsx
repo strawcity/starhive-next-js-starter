@@ -11,8 +11,8 @@ import {
 import HeaderBlock from "./components/HeaderBlock";
 
 export const metadata: Metadata = {
-  title: "Starhive starter",
-  description: "Starhive & Next.js Starter",
+  title: "Erik Nilsson",
+  description: "Developer for hire",
 };
 
 export default async function RootLayout({
