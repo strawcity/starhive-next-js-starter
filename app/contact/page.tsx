@@ -1,8 +1,10 @@
+"use client";
+
 import Link from "next/link";
 
 export const revalidate = 30;
 
-export default async function Contact() {
+export default function Contact() {
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
