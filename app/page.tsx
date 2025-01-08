@@ -16,9 +16,11 @@ export default async function Home() {
   let client;
   if (workspaceIdSetupCompleted && apiKeySetupCompleted) {
     client = createClient();
+  } else {
+    throw new Error("Client is not properly set up");
   }
 
-  const owner: StarhivePage<Owner> = await client!.search(
+  const owner: StarhivePage<Owner> = await client.search(
     Owner.TYPE_ID,
     `Name = "Erik Nilsson"`
   );

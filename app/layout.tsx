@@ -34,6 +34,7 @@ export default async function RootLayout({
     Owner.TYPE_ID,
     `Name = "Erik Nilsson"`
   );
+
   return (
     <html lang="en">
       <body>
