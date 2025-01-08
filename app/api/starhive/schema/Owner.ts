@@ -1,14 +1,14 @@
 import {AttributeVisitor} from '../client/AttributeVisitor'
 import {StarhiveObject} from '../client/StarhiveObject'
 import {StreamData} from '../client/StreamData'
-export class Type1 implements StarhiveObject {
+export class Owner implements StarhiveObject {
     static readonly TYPE_ID: string = 'b2f0039a-008d-4886-a85e-1440b7e99bce'
     static readonly ATTRIBUTES_CREATED: string = '242b54f6-a319-4eb8-9b08-caa95b229a57'
     static readonly ATTRIBUTES_UPDATED: string = '62a47082-f1aa-4722-ba1f-e2eaa322c1f2'
     static readonly ATTRIBUTES_AVATAR: string = '27291915-8d9c-4051-90af-4fa29579405e'
     static readonly ATTRIBUTES_NAME: string = 'c965c323-8399-40b3-8329-f0b42ff664e4'
-    static readonly ATTRIBUTES_START: string = '26487774-7d64-4b55-9004-27694c24bb52'
-    static readonly ATTRIBUTES_END: string = '7834a477-1efa-4ccb-b11a-335417c41afe'
+    static readonly ATTRIBUTES_TITLE: string = 'aa0477d5-f8bf-4c26-87b7-b72725068621'
+    static readonly ATTRIBUTES_BIO: string = 'dbb10e0e-7033-4416-b86c-68baa1e42b54'
     private readonly _id?: string
     getId(): string | undefined {
         return this._id
@@ -30,54 +30,54 @@ export class Type1 implements StarhiveObject {
     getName(): string | undefined {
         return this._name
     }
-    private readonly _start?: Date
-    getStart(): Date | undefined {
-        return this._start
+    private readonly _title?: string
+    getTitle(): string | undefined {
+        return this._title
     }
-    private readonly _end?: Date
-    getEnd(): Date | undefined {
-        return this._end
+    private readonly _bio?: string
+    getBio(): string | undefined {
+        return this._bio
     }
     accept(visitor: AttributeVisitor) {
         if (this._avatarContentKey !== undefined && this._avatarContentKey !== null) {
-          visitor.visitTextAttribute(Type1.ATTRIBUTES_AVATAR, [this._avatarContentKey]);
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_AVATAR, [this._avatarContentKey]);
         } else if (this._avatarContentKey === null) {
-          visitor.visitTextAttribute(Type1.ATTRIBUTES_AVATAR, []);
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_AVATAR, []);
         }
         if (this._name !== undefined) {
-          visitor.visitTextAttribute(Type1.ATTRIBUTES_NAME, [this._name]);
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_NAME, [this._name]);
         } else {
-          visitor.visitTextAttribute(Type1.ATTRIBUTES_NAME, []);
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_NAME, []);
         }
-        if (this._start !== undefined) {
-          visitor.visitDatetimeAttribute(Type1.ATTRIBUTES_START, [this._start]);
+        if (this._title !== undefined) {
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_TITLE, [this._title]);
         } else {
-          visitor.visitDatetimeAttribute(Type1.ATTRIBUTES_START, []);
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_TITLE, []);
         }
-        if (this._end !== undefined) {
-          visitor.visitDateAttribute(Type1.ATTRIBUTES_END, [this._end]);
+        if (this._bio !== undefined) {
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_BIO, [this._bio]);
         } else {
-          visitor.visitDateAttribute(Type1.ATTRIBUTES_END, []);
+          visitor.visitTextAttribute(Owner.ATTRIBUTES_BIO, []);
         }
     }
     getTypeId(): string {
-        return 'b2f0039a-008d-4886-a85e-1440b7e99bce'
+        return Owner.TYPE_ID
     }
-    static builder(): Type1Builder {
-        return new Type1Builder()
+    static builder(): OwnerBuilder {
+        return new OwnerBuilder()
     }
-    constructor(builder: Type1Builder) {
+    constructor(builder: OwnerBuilder) {
         this._id = builder.getId()
         this._created = builder.getCreated()
         this._updated = builder.getUpdated()
         this._avatar = builder.getAvatar()
         this._avatarContentKey = builder.getAvatarContentKey()
         this._name = builder.getName()
-        this._start = builder.getStart()
-        this._end = builder.getEnd()
+        this._title = builder.getTitle()
+        this._bio = builder.getBio()
     }
-    toBuilder(): Type1Builder {
-        const builder = Type1.builder()
+    toBuilder(): OwnerBuilder {
+        const builder = Owner.builder()
         if (this._id) {
           builder.id(this._id)
         }
@@ -93,22 +93,22 @@ export class Type1 implements StarhiveObject {
         if (this._name) {
           builder.name(this._name)
         }
-        if (this._start) {
-          builder.start(this._start)
+        if (this._title) {
+          builder.title(this._title)
         }
-        if (this._end) {
-          builder.end(this._end)
+        if (this._bio) {
+          builder.bio(this._bio)
         }
         return builder
     }
 }
-export class Type1Builder {
+export class OwnerBuilder {
     private _id?: string
     private _created?: Date
     getCreated(): Date | undefined {
         return this._created
     }
-    created(value: Date): Type1Builder {
+    created(value: Date): OwnerBuilder {
         this._created = value
         return this
     }
@@ -116,7 +116,7 @@ export class Type1Builder {
     getUpdated(): Date | undefined {
         return this._updated
     }
-    updated(value: Date): Type1Builder {
+    updated(value: Date): OwnerBuilder {
         this._updated = value
         return this
     }
@@ -124,7 +124,7 @@ export class Type1Builder {
     getAvatar(): string | undefined {
         return this._avatar
     }
-    avatar(value: string): Type1Builder {
+    avatar(value: string): OwnerBuilder {
         this._avatar = value
         return this
     }
@@ -132,11 +132,11 @@ export class Type1Builder {
     getAvatarContentKey(): string | null | undefined {
         return this._avatarContentKey
     }
-    avatarData(value: StreamData): Type1Builder {
+    avatarData(value: StreamData): OwnerBuilder {
         this._avatarContentKey = value.contentKey
         return this
     }
-    removeAvatarData(): Type1Builder {
+    removeAvatarData(): OwnerBuilder {
         this._avatarContentKey = null
         return this
     }
@@ -144,34 +144,34 @@ export class Type1Builder {
     getName(): string | undefined {
         return this._name
     }
-    name(value: string): Type1Builder {
+    name(value: string): OwnerBuilder {
         this._name = value
         return this
     }
-    private _start?: Date
-    getStart(): Date | undefined {
-        return this._start
+    private _title?: string
+    getTitle(): string | undefined {
+        return this._title
     }
-    start(value: Date): Type1Builder {
-        this._start = value
+    title(value: string): OwnerBuilder {
+        this._title = value
         return this
     }
-    private _end?: Date
-    getEnd(): Date | undefined {
-        return this._end
+    private _bio?: string
+    getBio(): string | undefined {
+        return this._bio
     }
-    end(value: Date): Type1Builder {
-        this._end = value
+    bio(value: string): OwnerBuilder {
+        this._bio = value
         return this
     }
     getId(): string | undefined {
         return this._id
     }
-    id(value: string): Type1Builder {
+    id(value: string): OwnerBuilder {
         this._id = value
         return this
     }
-    build(): Type1 {
-        return new Type1(this);
+    build(): Owner {
+        return new Owner(this);
     }
 }

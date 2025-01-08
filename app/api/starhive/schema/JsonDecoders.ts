@@ -1,6 +1,9 @@
 import {JsonDecoder} from '../client/JsonDecoder'
-import {Type1} from './Type1'
-import {Type1Decoder} from './Type1Decoder'
+import {Owner} from './Owner'
+import {OwnerDecoder} from './OwnerDecoder'
+import {Contact} from './Contact'
+import {ContactDecoder} from './ContactDecoder'
 export const JSON_DECODERS: Map<string, () => JsonDecoder<any>> = new Map<string, () => JsonDecoder<any>>([
-  [Type1.TYPE_ID, () => new Type1Decoder()]
+  [Owner.TYPE_ID, () => new OwnerDecoder()],
+  [Contact.TYPE_ID, () => new ContactDecoder()]
 ])
