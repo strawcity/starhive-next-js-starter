@@ -1,5 +1,6 @@
-export const revalidate = 30;
+export const revalidate = 1;
 
+import Image from "next/image";
 import {
   createClient,
   starhiveApiToken,
@@ -7,8 +8,6 @@ import {
 } from "@/app/api/ClientFactory";
 import { StarhivePage } from "@/app/api/starhive/client/StarhivePage";
 import { Owner } from "@/app/api/starhive/schema/Owner";
-import { Button } from "@nextui-org/button";
-import { Link } from "@nextui-org/react";
 
 export default async function Home() {
   const workspaceIdSetupCompleted = starhiveWorkspaceId() !== undefined;
@@ -28,10 +27,14 @@ export default async function Home() {
 
   return (
     <div className="w-96 flex flex-col gap-4 mt-8">
+      <h2 className="text-2xl font-bold">About me</h2>
+      <Image
+        src={owner.result[0].getAvatar() || ""}
+        alt="Erik Nilsson"
+        width={100}
+        height={100}
+      />
       <p>{owner.result[0].getBio()}</p>
-      <Link href="/contact">
-        <Button color="primary">Contact</Button>
-      </Link>
     </div>
   );
 }

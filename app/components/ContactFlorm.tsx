@@ -40,7 +40,7 @@ export default function ContactForm() {
           <h4>Thanks for reaching out!</h4>
           <p>I will get back to you as soon as possible.</p>
           <Link href="/">
-            <Button>Back</Button>
+            <Button className="bg-slate-600 text-white rounded-md">Back</Button>
           </Link>
         </div>
       ) : (
@@ -64,9 +64,15 @@ export default function ContactForm() {
 
               <div className="flex gap-2 w-full justify-end">
                 <Link href="/">
-                  <Button>Back</Button>
+                  <Button className="bg-slate-200 text-black rounded-md">
+                    Back
+                  </Button>
                 </Link>
-                <Button color="primary" type="submit" isLoading={isLoading}>
+                <Button
+                  className="bg-slate-600 text-white rounded-md"
+                  type="submit"
+                  isLoading={isLoading}
+                >
                   Submit
                 </Button>
               </div>

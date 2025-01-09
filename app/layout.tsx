@@ -38,11 +38,11 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <Providers>
-          <div className="flex flex-col items-center justify-center w-screen h-screen">
-            <HeaderBlock
-              name={owner.result[0].getName() || ""}
-              title={owner.result[0].getTitle() || ""}
-            />
+          <HeaderBlock
+            name={owner.result[0].getName() || ""}
+            title={owner.result[0].getTitle() || ""}
+          />
+          <div className="flex flex-col items-center justify-center w-screen">
             {children}
           </div>
         </Providers>
