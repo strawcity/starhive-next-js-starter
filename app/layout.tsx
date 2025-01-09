@@ -9,6 +9,7 @@ import {
   starhiveWorkspaceId,
 } from "./api/ClientFactory";
 import HeaderBlock from "./components/HeaderBlock";
+import { Providers } from "./providers";
 
 export const metadata: Metadata = {
   title: "Erik Nilsson",
@@ -36,13 +37,15 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="flex flex-col items-center justify-center w-screen">
+        <Providers>
           <HeaderBlock
             name={owner.result[0].getName() || ""}
             title={owner.result[0].getTitle() || ""}
           />
-          {children}
-        </div>
+          <div className="flex flex-col items-center justify-center w-screen">
+            {children}
+          </div>
+        </Providers>
       </body>
     </html>
   );
