@@ -7,7 +7,8 @@ import {
 } from "@/app/api/ClientFactory";
 import { StarhivePage } from "@/app/api/starhive/client/StarhivePage";
 import { Owner } from "@/app/api/starhive/schema/Owner";
-import Link from "next/link";
+import { Button } from "@nextui-org/button";
+import { Link } from "@nextui-org/react";
 
 export default async function Home() {
   const workspaceIdSetupCompleted = starhiveWorkspaceId() !== undefined;
@@ -26,13 +27,10 @@ export default async function Home() {
   );
 
   return (
-    <div className="w-1/2 flex flex-col gap-2">
+    <div className="w-96 flex flex-col gap-4 mt-8">
       <p>{owner.result[0].getBio()}</p>
-      <Link
-        href="/contact"
-        className="p-2 w-min bg-blue-500 text-white rounded-md"
-      >
-        Contact
+      <Link href="/contact">
+        <Button color="primary">Contact</Button>
       </Link>
     </div>
   );

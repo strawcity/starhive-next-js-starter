@@ -1,6 +1,8 @@
 "use client";
 
+import { Button } from "@nextui-org/button";
 import Link from "next/link";
+import { Input } from "@nextui-org/input";
 import React, { useState } from "react";
 
 export default function ContactForm() {
@@ -8,6 +10,7 @@ export default function ContactForm() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log("submitted");
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
 
@@ -20,6 +23,7 @@ export default function ContactForm() {
       method: "POST",
       body: JSON.stringify(data),
     }).then((res) => {
+      console.log("🚀 ~ handleSubmit ~ res:", res);
       if (res.ok) {
         setHasSentMessage(true);
       } else {
@@ -29,7 +33,7 @@ export default function ContactForm() {
   }
 
   return (
-    <div className="w-1/2 mt-16">
+    <div className="w-96 mt-16">
       {hasSentMessage ? (
         <div className="flex flex-col items-center justify-center gap-4">
           <h4>Thanks for reaching out!</h4>
@@ -55,7 +59,8 @@ export default function ContactForm() {
               />
             </div>
             <div className="w-full flex flex-col gap-2">
-              <label htmlFor="email">Email</label>
+              <Input label="Email" type="email" />
+              {/* <label htmlFor="email">Email</label>
               <input
                 className="p-2 border border-gray-300 rounded-md"
                 type="email"
@@ -63,7 +68,7 @@ export default function ContactForm() {
                 placeholder="Email"
                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                 title="Please enter a valid email address"
-              />
+              /> */}
             </div>
             <div className="w-full flex flex-col gap-2">
               <label htmlFor="message">Message</label>
@@ -74,15 +79,12 @@ export default function ContactForm() {
               />
             </div>
             <div className="flex gap-2 w-full justify-end">
-              <Link href="/" className="p-2 bg-gray-400 text-white rounded-md">
-                Back
+              <Link href="/">
+                <Button>Back</Button>
               </Link>
-              <button
-                className="p-2 bg-blue-500 text-white rounded-md"
-                type="submit"
-              >
+              <Button color="primary" type="submit">
                 Submit
-              </button>
+              </Button>
             </div>
           </form>
         </>

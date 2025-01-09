@@ -9,6 +9,7 @@ type ContactRequest = {
 };
 
 export async function POST(request: Request) {
+  console.log("🚀 ~ POST ~ request:", request);
   const client = createClient();
   const body: ContactRequest = await request.json();
   const contact = await client.createObject(
