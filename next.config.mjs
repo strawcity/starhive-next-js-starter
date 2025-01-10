@@ -4,7 +4,7 @@ const nextConfig = {
         // TODO: !!
         remotePatterns: [{
             protocol: 'https',
-            hostname: 'media.dev.starhive.io',
+            hostname: 'media.starhive.com',
             port: '',
             pathname: '/**'
         }, {

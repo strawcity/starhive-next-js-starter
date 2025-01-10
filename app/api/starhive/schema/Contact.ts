@@ -9,6 +9,8 @@ export class Contact implements StarhiveObject {
     static readonly ATTRIBUTES_NAME: string = '8fa6f3d3-82d6-42e8-b1a1-b08b167902c8'
     static readonly ATTRIBUTES_EMAIL: string = '109a6a50-de3b-4c19-a061-4d447a31b2a6'
     static readonly ATTRIBUTES_MESSAGE: string = 'd37769df-e333-4f57-a648-aeac888d7567'
+    static readonly ATTRIBUTES_HAVE_I_RESPONDED: string = '5c6c57e5-f328-47eb-8db6-d3ff58a4676c'
+    static readonly ATTRIBUTES_NOTES: string = '1acf9ec7-d8cf-439c-a280-cfd677b5bf7b'
     private readonly _id?: string
     getId(): string | undefined {
         return this._id
@@ -38,6 +40,14 @@ export class Contact implements StarhiveObject {
     getMessage(): string | undefined {
         return this._message
     }
+    private readonly _haveIResponded?: boolean
+    getHaveIResponded(): boolean | undefined {
+        return this._haveIResponded
+    }
+    private readonly _notes?: string
+    getNotes(): string | undefined {
+        return this._notes
+    }
     accept(visitor: AttributeVisitor) {
         if (this._avatarContentKey !== undefined && this._avatarContentKey !== null) {
           visitor.visitTextAttribute(Contact.ATTRIBUTES_AVATAR, [this._avatarContentKey]);
@@ -59,6 +69,16 @@ export class Contact implements StarhiveObject {
         } else {
           visitor.visitTextAttribute(Contact.ATTRIBUTES_MESSAGE, []);
         }
+        if (this._haveIResponded !== undefined) {
+          visitor.visitBooleanAttribute(Contact.ATTRIBUTES_HAVE_I_RESPONDED, [this._haveIResponded]);
+        } else {
+          visitor.visitBooleanAttribute(Contact.ATTRIBUTES_HAVE_I_RESPONDED, []);
+        }
+        if (this._notes !== undefined) {
+          visitor.visitTextAttribute(Contact.ATTRIBUTES_NOTES, [this._notes]);
+        } else {
+          visitor.visitTextAttribute(Contact.ATTRIBUTES_NOTES, []);
+        }
     }
     getTypeId(): string {
         return Contact.TYPE_ID
@@ -75,6 +95,8 @@ export class Contact implements StarhiveObject {
         this._name = builder.getName()
         this._email = builder.getEmail()
         this._message = builder.getMessage()
+        this._haveIResponded = builder.getHaveIResponded()
+        this._notes = builder.getNotes()
     }
     toBuilder(): ContactBuilder {
         const builder = Contact.builder()
@@ -98,6 +120,12 @@ export class Contact implements StarhiveObject {
         }
         if (this._message) {
           builder.message(this._message)
+        }
+        if (this._haveIResponded) {
+          builder.haveIResponded(this._haveIResponded)
+        }
+        if (this._notes) {
+          builder.notes(this._notes)
         }
         return builder
     }
@@ -162,6 +190,22 @@ export class ContactBuilder {
     }
     message(value: string): ContactBuilder {
         this._message = value
+        return this
+    }
+    private _haveIResponded?: boolean
+    getHaveIResponded(): boolean | undefined {
+        return this._haveIResponded
+    }
+    haveIResponded(value: boolean): ContactBuilder {
+        this._haveIResponded = value
+        return this
+    }
+    private _notes?: string
+    getNotes(): string | undefined {
+        return this._notes
+    }
+    notes(value: string): ContactBuilder {
+        this._notes = value
         return this
     }
     getId(): string | undefined {

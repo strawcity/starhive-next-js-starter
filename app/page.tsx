@@ -24,7 +24,7 @@ export default async function Home() {
     Owner.TYPE_ID,
     `Name = "Erik Nilsson"`
   );
-
+  console.log(owner.result[0].getAvatar());
   return (
     <div className="w-96 flex flex-col gap-4 mt-8">
       <h2 className="text-2xl font-bold">About me</h2>

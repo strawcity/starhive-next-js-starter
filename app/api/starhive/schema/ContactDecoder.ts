@@ -19,6 +19,10 @@ export class ContactDecoder implements JsonDecoder<Contact> {
           const parsedValues = values.map(v => new Date(v.value))
           this.builder.updated(parsedValues[0]);
         }
+        if (attributeId == Contact.ATTRIBUTES_AVATAR) {
+          const parsedValues = values.map(v => v.value)
+          this.builder.avatar(parsedValues[0]);
+        }
         if (attributeId == Contact.ATTRIBUTES_NAME) {
           const parsedValues = values.map(v => v.value)
           this.builder.name(parsedValues[0]);
@@ -30,6 +34,14 @@ export class ContactDecoder implements JsonDecoder<Contact> {
         if (attributeId == Contact.ATTRIBUTES_MESSAGE) {
           const parsedValues = values.map(v => v.value)
           this.builder.message(parsedValues[0]);
+        }
+        if (attributeId == Contact.ATTRIBUTES_HAVE_I_RESPONDED) {
+          const parsedValues = values.map(v => JSON.parse(v.value))
+          this.builder.haveIResponded(parsedValues[0]);
+        }
+        if (attributeId == Contact.ATTRIBUTES_NOTES) {
+          const parsedValues = values.map(v => v.value)
+          this.builder.notes(parsedValues[0]);
         }
     }
     build(): Contact {

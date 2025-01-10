@@ -19,6 +19,10 @@ export class OwnerDecoder implements JsonDecoder<Owner> {
           const parsedValues = values.map(v => new Date(v.value))
           this.builder.updated(parsedValues[0]);
         }
+        if (attributeId == Owner.ATTRIBUTES_AVATAR) {
+          const parsedValues = values.map(v => v.value)
+          this.builder.avatar(parsedValues[0]);
+        }
         if (attributeId == Owner.ATTRIBUTES_NAME) {
           const parsedValues = values.map(v => v.value)
           this.builder.name(parsedValues[0]);
